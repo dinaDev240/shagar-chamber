@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Shagar Chamber | Expo Management</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         ADMIN EXPO HEADER
+         ===================================================== -->
+
+    <header class="admin-header">
+
+        <div class="container">
+
+            <div class="admin-header-inner">
+
+                <div>
+
+                    <span class="admin-label">
+                        SHAGAR CHAMBER
+                    </span>
+
+                    <h1>
+                        Expo Management
+                    </h1>
+
+                </div>
+
+
+                <a
+                    href="index.html"
+                    class="admin-back-link"
+                >
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back to Website
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- =====================================================
+             CREATE EXPO SECTION
+             ===================================================== -->
+
+        <section class="admin-section">
+
+            <div class="container">
+
+                <div class="admin-section-heading">
+
+                    <span class="admin-section-label">
+                        EXPO MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Create Expo
+                    </h2>
+
+                    <p>
+                        Add and manage National and International
+                        Expo events.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXPO FORM
+                     ================================================= -->
+
+                <form
+                    id="expoForm"
+                    class="admin-form"
+                >
+
+                    <div class="admin-form-grid">
+
+
+                        <!-- TITLE -->
+
+                        <div class="admin-form-group">
+
+                            <label for="expoTitle">
+                                Expo Title
+                            </label>
+
+                            <input
+                                type="text"
+                                id="expoTitle"
+                                name="title"
+                                placeholder="Enter expo title"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- TYPE -->
+
+                        <div class="admin-form-group">
+
+                            <label for="expoType">
+                                Expo Type
+                            </label>
+
+                            <select
+                                id="expoType"
+                                name="type"
+                                required
+                            >
+
+                                <option value="">
+                                    Select Expo Type
+                                </option>
+
+                                <option value="National Expo">
+                                    National Expo
+                                </option>
+
+                                <option value="International Expo">
+                                    International Expo
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- LOCATION -->
+
+                        <div class="admin-form-group">
+
+                            <label for="expoLocation">
+                                Location
+                            </label>
+
+                            <input
+                                type="text"
+                                id="expoLocation"
+                                name="location"
+                                placeholder="e.g. Addis Ababa, Ethiopia"
+                            >
+
+                        </div>
+
+
+                        <!-- STATUS -->
+
+                        <div class="admin-form-group">
+
+                            <label for="expoStatus">
+                                Status
+                            </label>
+
+                            <select
+                                id="expoStatus"
+                                name="status"
+                            >
+
+                                <option value="Upcoming">
+                                    Upcoming
+                                </option>
+
+                                <option value="Ongoing">
+                                    Ongoing
+                                </option>
+
+                                <option value="Completed">
+                                    Completed
+                                </option>
+
+                                <option value="Cancelled">
+                                    Cancelled
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- START DATE -->
+
+                        <div class="admin-form-group">
+
+                            <label for="expoStartDate">
+                                Start Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="expoStartDate"
+                                name="start_date"
+                            >
+
+                        </div>
+
+
+                        <!-- END DATE -->
+
+                        <div class="admin-form-group">
+
+                            <label for="expoEndDate">
+                                End Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="expoEndDate"
+                                name="end_date"
+                            >
+
+                        </div>
+
+
+                        <!-- CONTACT EMAIL -->
+
+                        <div class="admin-form-group">
+
+                            <label for="expoEmail">
+                                Contact Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="expoEmail"
+                                name="contact_email"
+                                placeholder="expo@example.com"
+                            >
+
+                        </div>
+
+
+                        <!-- CONTACT PHONE -->
+
+                        <div class="admin-form-group">
+
+                            <label for="expoPhone">
+                                Contact Phone
+                            </label>
+
+                            <input
+                                type="text"
+                                id="expoPhone"
+                                name="contact_phone"
+                                placeholder="0912345678"
+                            >
+
+                        </div>
+
+
+                        <!-- IMAGE URL -->
+
+                        <div class="admin-form-group admin-form-full">
+
+                            <label for="expoImage">
+                                Image URL
+                            </label>
+
+                            <input
+                                type="url"
+                                id="expoImage"
+                                name="image_url"
+                                placeholder="https://example.com/expo-image.jpg"
+                            >
+
+                        </div>
+
+
+                        <!-- DESCRIPTION -->
+
+                        <div class="admin-form-group admin-form-full">
+
+                            <label for="expoDescription">
+                                Description
+                            </label>
+
+                            <textarea
+                                id="expoDescription"
+                                name="description"
+                                rows="6"
+                                placeholder="Describe the expo..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FORM BUTTONS -->
+
+                    <div class="admin-form-actions">
+
+                        <button
+                            type="submit"
+                            class="admin-primary-button"
+                        >
+                            <i class="fa-solid fa-plus"></i>
+                            Create Expo
+                        </button>
+
+                        <button
+                            type="reset"
+                            class="admin-secondary-button"
+                        >
+                            <i class="fa-solid fa-rotate-left"></i>
+                            Reset
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             EXISTING EXPO SECTION
+             ===================================================== -->
+
+        <section class="admin-section admin-list-section">
+
+            <div class="container">
+
+                <div class="admin-section-heading">
+
+                    <span class="admin-section-label">
+                        EXISTING EXPOS
+                    </span>
+
+                    <h2>
+                        Manage Expos
+                    </h2>
+
+                </div>
+
+
+                <div class="admin-list-header">
+
+                    <button
+                        type="button"
+                        id="refreshExpos"
+                        class="admin-secondary-button"
+                    >
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                        Refresh Expos
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="admin-expos-list"
+                    class="admin-list"
+                >
+
+                    <div class="admin-empty-state">
+
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+
+                        <p>
+                            Loading expos...
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="admin-expo.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Job Application | Shagar Chamber
+    </title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Main Website CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         APPLICATION HEADER
+         ===================================================== -->
+
+    <header class="site-header">
+
+        <div class="container">
+
+            <div class="logo">
+
+                <h1>
+                    Shagar Chamber
+                </h1>
+
+                <span>
+                    Commerce & Sectoral Association
+                </span>
+
+            </div>
+
+
+            <a
+                href="index.html#jobs"
+                class="membership-button"
+            >
+                <i class="fas fa-arrow-left"></i>
+                Back to Jobs
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         APPLICATION PAGE
+         ===================================================== -->
+
+    <main>
+
+        <section class="membership-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        <i class="fas fa-briefcase"></i>
+                        JOB APPLICATION
+                    </span>
+
+                    <h2>
+                        Apply for a Position
+                    </h2>
+
+                    <p>
+                        Complete the application form below and
+                        submit your CV for consideration.
+                    </p>
+
+                </div>
+
+
+                <!-- JOB INFORMATION -->
+
+                <div
+                    id="job-information"
+                    class="membership-form"
+                >
+
+                    <div class="form-group">
+
+                        <label>
+                            Position Applying For
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fas fa-briefcase"></i>
+
+                            <input
+                                type="text"
+                                id="jobTitle"
+                                name="jobTitle"
+                                readonly
+                                placeholder="Loading position..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         APPLICATION FORM
+                         ================================================= -->
+
+                    <form
+                        id="jobApplicationForm"
+                        enctype="multipart/form-data"
+                    >
+
+                        <input
+                            type="hidden"
+                            id="opportunityId"
+                            name="opportunityId"
+                        >
+
+
+                        <!-- FULL NAME -->
+
+                        <div class="form-group">
+
+                            <label for="fullName">
+                                Full Name <span>*</span>
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-user"></i>
+
+                                <input
+                                    type="text"
+                                    id="fullName"
+                                    name="fullName"
+                                    required
+                                    placeholder="Enter your full name"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email Address <span>*</span>
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-envelope"></i>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    required
+                                    placeholder="Enter your email address"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- PHONE -->
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Phone Number <span>*</span>
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-phone"></i>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    required
+                                    placeholder="Enter your phone number"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- EDUCATION -->
+
+                        <div class="form-group">
+
+                            <label for="education">
+                                Education <span>*</span>
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-graduation-cap"></i>
+
+                                <input
+                                    type="text"
+                                    id="education"
+                                    name="education"
+                                    required
+                                    placeholder="Example: Bachelor's Degree in Business Administration"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- EXPERIENCE -->
+
+                        <div class="form-group">
+
+                            <label for="experience">
+                                Work Experience
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-user-tie"></i>
+
+                                <textarea
+                                    id="experience"
+                                    name="experience"
+                                    rows="5"
+                                    placeholder="Describe your relevant work experience"
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- COVER LETTER -->
+
+                        <div class="form-group">
+
+                            <label for="coverLetter">
+                                Cover Letter
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-file-lines"></i>
+
+                                <textarea
+                                    id="coverLetter"
+                                    name="coverLetter"
+                                    rows="7"
+                                    placeholder="Write your cover letter"
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- CV -->
+
+                        <div class="form-group">
+
+                            <label for="cv">
+                                Upload CV <span>*</span>
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-file-pdf"></i>
+
+                                <input
+                                    type="file"
+                                    id="cv"
+                                    name="cv"
+                                    accept=".pdf,.doc,.docx"
+                                    required
+                                >
+
+                            </div>
+
+                            <small>
+                                Accepted formats: PDF, DOC, DOCX.
+                                Maximum size: 5 MB.
+                            </small>
+
+                        </div>
+
+
+
+                        <!-- SUBMIT -->
+
+                        <div class="form-actions">
+
+                            <button
+                                type="submit"
+                                class="membership-button"
+                            >
+
+                                <i class="fas fa-paper-plane"></i>
+
+                                Submit Application
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="job-application.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shagar Chamber | Events Management</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           SHAGAR CHAMBER
+           ADMIN EVENTS MANAGEMENT
+           ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f9;
+            color: #172033;
+        }
+
+
+        /* =====================================================
+           HEADER
+           ===================================================== */
+
+        .admin-header {
+
+            background: #0b1f3a;
+
+            color: white;
+
+            padding: 22px 35px;
+
+            border-bottom: 4px solid #d4a72c;
+        }
+
+
+        .admin-header-inner {
+
+            max-width: 1400px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        .admin-brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .admin-logo {
+
+            width: 52px;
+            height: 52px;
+
+            border-radius: 50%;
+
+            background: #d4a72c;
+
+            color: #0b1f3a;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 21px;
+        }
+
+
+        .admin-brand h1 {
+
+            font-size: 22px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .admin-brand span {
+
+            font-size: 12px;
+
+            color: #d4a72c;
+        }
+
+
+        .dashboard-link {
+
+            background: #d4a72c;
+
+            color: #0b1f3a;
+
+            text-decoration: none;
+
+            padding: 11px 17px;
+
+            border-radius: 7px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+
+        .dashboard-link:hover {
+
+            background: white;
+        }
+
+
+        /* =====================================================
+           MAIN
+           ===================================================== */
+
+        .admin-container {
+
+            max-width: 1400px;
+
+            margin: auto;
+
+            padding: 35px;
+        }
+
+
+        .page-title {
+
+            margin-bottom: 25px;
+        }
+
+
+        .page-title h2 {
+
+            color: #0b1f3a;
+
+            font-size: 28px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .page-title p {
+
+            color: #6b7280;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           FORM CARD
+           ===================================================== */
+
+        .admin-card {
+
+            background: white;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 12px;
+
+            padding: 28px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0,0,0,0.04);
+        }
+
+
+        .admin-card h3 {
+
+            color: #0b1f3a;
+
+            font-size: 20px;
+
+            margin-bottom: 22px;
+
+            padding-bottom: 12px;
+
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .form-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+        }
+
+
+        .form-group.full {
+
+            grid-column: 1 / -1;
+        }
+
+
+        .form-group label {
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            color: #374151;
+        }
+
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+
+            width: 100%;
+
+            padding: 12px 13px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 7px;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: 0.2s;
+        }
+
+
+        .form-group textarea {
+
+            min-height: 120px;
+
+            resize: vertical;
+        }
+
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+
+            border-color: #d4a72c;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(212,167,44,0.12);
+        }
+
+
+        .form-actions {
+
+            margin-top: 22px;
+
+            display: flex;
+
+            gap: 10px;
+        }
+
+
+        .btn {
+
+            border: none;
+
+            border-radius: 7px;
+
+            padding: 12px 20px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .btn-primary {
+
+            background: #0b1f3a;
+
+            color: white;
+        }
+
+
+        .btn-primary:hover {
+
+            background: #152f52;
+        }
+
+
+        .btn-secondary {
+
+            background: #e5e7eb;
+
+            color: #374151;
+        }
+
+
+        .btn-secondary:hover {
+
+            background: #d1d5db;
+        }
+
+
+        /* =====================================================
+           EVENTS LIST
+           ===================================================== */
+
+        .list-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .list-header h3 {
+
+            margin: 0;
+
+            padding: 0;
+
+            border: none;
+        }
+
+
+        .event-list {
+
+            display: grid;
+
+            gap: 15px;
+        }
+
+
+        .event-item {
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 10px;
+
+            padding: 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-start;
+
+            gap: 20px;
+        }
+
+
+        .event-info {
+
+            flex: 1;
+        }
+
+
+        .event-info h4 {
+
+            color: #0b1f3a;
+
+            font-size: 18px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .event-meta {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+            margin-bottom: 10px;
+
+            color: #6b7280;
+
+            font-size: 13px;
+        }
+
+
+        .event-meta span {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+        }
+
+
+        .event-meta i {
+
+            color: #b58b18;
+        }
+
+
+        .event-description {
+
+            color: #6b7280;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        .event-status {
+
+            display: inline-block;
+
+            margin-top: 10px;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            background: #f8edcf;
+
+            color: #8a6910;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+
+        .event-actions {
+
+            display: flex;
+
+            gap: 8px;
+
+            flex-shrink: 0;
+        }
+
+
+        .action-btn {
+
+            border: none;
+
+            width: 38px;
+            height: 38px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .edit-btn {
+
+            background: #e8eef7;
+
+            color: #0b1f3a;
+        }
+
+
+        .delete-btn {
+
+            background: #fee2e2;
+
+            color: #b91c1c;
+        }
+
+
+        .action-btn:hover {
+
+            transform: translateY(-1px);
+        }
+
+
+        .empty-state {
+
+            text-align: center;
+
+            padding: 45px 20px;
+
+            color: #6b7280;
+        }
+
+
+        .empty-state i {
+
+            font-size: 40px;
+
+            color: #d4a72c;
+
+            margin-bottom: 12px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 768px) {
+
+            .admin-header {
+
+                padding: 18px 20px;
+            }
+
+
+            .admin-header-inner {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .admin-container {
+
+                padding: 20px;
+            }
+
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .form-group.full {
+
+                grid-column: auto;
+            }
+
+
+            .event-item {
+
+                flex-direction: column;
+            }
+
+
+            .event-actions {
+
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <header class="admin-header">
+
+        <div class="admin-header-inner">
+
+            <div class="admin-brand">
+
+                <div class="admin-logo">
+                    <i class="fas fa-calendar-days"></i>
+                </div>
+
+                <div>
+
+                    <h1>
+                        Shagar Chamber
+                    </h1>
+
+                    <span>
+                        EVENTS MANAGEMENT
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="admin-dashboard.html"
+                class="dashboard-link"
+            >
+                <i class="fas fa-chart-line"></i>
+                Dashboard
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="admin-container">
+
+
+        <div class="page-title">
+
+            <h2>
+                Events Management
+            </h2>
+
+            <p>
+                Create and manage Shagar Chamber events.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             EVENT FORM
+             ================================================= -->
+
+        <div class="admin-card">
+
+            <h3>
+                <i class="fas fa-plus-circle"></i>
+                Add New Event
+            </h3>
+
+
+            <form id="eventForm">
+
+
+                <div class="form-grid">
+
+
+                    <!-- TITLE -->
+
+                    <div class="form-group">
+
+                        <label for="title">
+                            Event Title *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="title"
+                            name="title"
+                            placeholder="Enter event title"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EVENT TYPE -->
+
+                    <div class="form-group">
+
+                        <label for="eventType">
+                            Event Type *
+                        </label>
+
+                        <select
+                            id="eventType"
+                            name="eventType"
+                            required
+                        >
+
+                            <option value="">
+                                Select event type
+                            </option>
+
+                            <option value="Conference">
+                                Conference
+                            </option>
+
+                            <option value="Workshop">
+                                Workshop
+                            </option>
+
+                            <option value="Seminar">
+                                Seminar
+                            </option>
+
+                            <option value="Meeting">
+                                Meeting
+                            </option>
+
+                            <option value="Business Forum">
+                                Business Forum
+                            </option>
+
+                            <option value="Networking">
+                                Networking
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- DATE -->
+
+                    <div class="form-group">
+
+                        <label for="eventDate">
+                            Event Date *
+                        </label>
+
+                        <input
+                            type="date"
+                            id="eventDate"
+                            name="eventDate"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- TIME -->
+
+                    <div class="form-group">
+
+                        <label for="eventTime">
+                            Event Time
+                        </label>
+
+                        <input
+                            type="time"
+                            id="eventTime"
+                            name="eventTime"
+                        >
+
+                    </div>
+
+
+                    <!-- LOCATION -->
+
+                    <div class="form-group">
+
+                        <label for="location">
+                            Location
+                        </label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            name="location"
+                            placeholder="Enter event location"
+                        >
+
+                    </div>
+
+
+                    <!-- IMAGE -->
+
+                    <div class="form-group">
+
+                        <label for="imageUrl">
+                            Image URL
+                        </label>
+
+                        <input
+                            type="text"
+                            id="imageUrl"
+                            name="imageUrl"
+                            placeholder="Enter image URL"
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="contactEmail">
+                            Contact Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="contactEmail"
+                            name="contactEmail"
+                            placeholder="Enter contact email"
+                        >
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-group">
+
+                        <label for="contactPhone">
+                            Contact Phone
+                        </label>
+
+                        <input
+                            type="text"
+                            id="contactPhone"
+                            name="contactPhone"
+                            placeholder="Enter contact phone"
+                        >
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div class="form-group">
+
+                        <label for="status">
+                            Status
+                        </label>
+
+                        <select
+                            id="status"
+                            name="status"
+                        >
+
+                            <option value="Upcoming">
+                                Upcoming
+                            </option>
+
+                            <option value="Completed">
+                                Completed
+                            </option>
+
+                            <option value="Cancelled">
+                                Cancelled
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="form-group full">
+
+                        <label for="description">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="description"
+                            name="description"
+                            placeholder="Enter event description"
+                        ></textarea>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="form-actions">
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        <i class="fas fa-save"></i>
+                        Save Event
+                    </button>
+
+
+                    <button
+                        type="reset"
+                        class="btn btn-secondary"
+                        id="resetEventForm"
+                    >
+                        <i class="fas fa-rotate-left"></i>
+                        Reset
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+
+
+        <!-- =================================================
+             EVENTS LIST
+             ================================================= -->
+
+        <div class="admin-card">
+
+            <div class="list-header">
+
+                <h3>
+                    <i class="fas fa-calendar-check"></i>
+                    Events
+                </h3>
+
+
+                <button
+                    class="btn btn-secondary"
+                    id="refreshEvents"
+                >
+                    <i class="fas fa-refresh"></i>
+                    Refresh
+                </button>
+
+            </div>
+
+
+            <div
+                id="admin-events-list"
+                class="event-list"
+            >
+
+                <div class="empty-state">
+
+                    <i class="fas fa-spinner fa-spin"></i>
+
+                    <p>
+                        Loading events...
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="admin-events.js"></script>
+
+</body>
+
+</html>

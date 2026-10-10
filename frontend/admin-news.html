@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Shagar Chamber — News Management</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Main Website CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         ADMIN HEADER
+         ===================================================== -->
+
+    <header class="admin-header">
+
+        <div class="admin-header-inner">
+
+            <div class="admin-brand">
+
+                <div class="admin-logo">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+
+                <div>
+                    <h1>Shagar Chamber</h1>
+                    <span>News Management</span>
+                </div>
+
+            </div>
+
+
+            <a
+                href="index.html"
+                class="admin-back-link"
+            >
+                <i class="fas fa-arrow-left"></i>
+                Back to Website
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
+    <main class="admin-main">
+
+        <div class="admin-container">
+
+
+            <!-- PAGE HEADING -->
+
+            <div class="admin-page-heading">
+
+                <span class="admin-section-label">
+                    <i class="fas fa-newspaper"></i>
+                    Content Management
+                </span>
+
+                <h2>
+                    News Management
+                </h2>
+
+                <p>
+                    Create and manage Shagar Chamber news
+                    and announcements.
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CREATE NEWS
+                 ================================================= -->
+
+            <section class="admin-panel">
+
+                <div class="admin-panel-heading">
+
+                    <div>
+                        <h3>
+                            <i class="fas fa-plus-circle"></i>
+                            Create News Article
+                        </h3>
+
+                        <p>
+                            Publish a new news article or save
+                            it as a draft.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <form id="newsForm">
+
+
+                    <div class="admin-form-grid">
+
+
+                        <!-- TITLE -->
+
+                        <div class="admin-form-group admin-form-full">
+
+                            <label for="newsTitle">
+                                News Title
+                                <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="newsTitle"
+                                placeholder="Enter news title"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <!-- CATEGORY -->
+
+                        <div class="admin-form-group">
+
+                            <label for="newsCategory">
+                                Category
+                                <span>*</span>
+                            </label>
+
+                            <select
+                                id="newsCategory"
+                                required
+                            >
+
+                                <option value="">
+                                    Select category
+                                </option>
+
+                                <option value="Business">
+                                    Business
+                                </option>
+
+                                <option value="Chamber News">
+                                    Chamber News
+                                </option>
+
+                                <option value="Economy">
+                                    Economy
+                                </option>
+
+                                <option value="Events">
+                                    Events
+                                </option>
+
+                                <option value="Announcements">
+                                    Announcements
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- AUTHOR -->
+
+                        <div class="admin-form-group">
+
+                            <label for="newsAuthor">
+                                Author
+                            </label>
+
+                            <input
+                                type="text"
+                                id="newsAuthor"
+                                placeholder="Author name"
+                            >
+
+                        </div>
+
+
+
+                        <!-- IMAGE URL -->
+
+                        <div class="admin-form-group admin-form-full">
+
+                            <label for="newsImage">
+                                Image URL
+                            </label>
+
+                            <input
+                                type="url"
+                                id="newsImage"
+                                placeholder="https://example.com/image.jpg"
+                            >
+
+                            <small>
+                                We will add direct image uploads later.
+                            </small>
+
+                        </div>
+
+
+
+                        <!-- EXCERPT -->
+
+                        <div class="admin-form-group admin-form-full">
+
+                            <label for="newsExcerpt">
+                                Short Summary
+                            </label>
+
+                            <textarea
+                                id="newsExcerpt"
+                                rows="3"
+                                placeholder="Write a short summary of the article..."
+                            ></textarea>
+
+                        </div>
+
+
+
+                        <!-- CONTENT -->
+
+                        <div class="admin-form-group admin-form-full">
+
+                            <label for="newsContent">
+                                Article Content
+                                <span>*</span>
+                            </label>
+
+                            <textarea
+                                id="newsContent"
+                                rows="10"
+                                placeholder="Write the full news article here..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+
+                        <!-- STATUS -->
+
+                        <div class="admin-form-group">
+
+                            <label for="newsStatus">
+                                Status
+                            </label>
+
+                            <select id="newsStatus">
+
+                                <option value="Published">
+                                    Published
+                                </option>
+
+                                <option value="Draft">
+                                    Draft
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- BUTTONS -->
+
+                    <div class="admin-form-actions">
+
+                        <button
+                            type="submit"
+                            class="admin-primary-button"
+                        >
+                            <i class="fas fa-paper-plane"></i>
+                            Publish News
+                        </button>
+
+                        <button
+                            type="reset"
+                            class="admin-secondary-button"
+                        >
+                            <i class="fas fa-rotate-left"></i>
+                            Clear
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </section>
+
+<!-- =================================================
+     EDIT NEWS
+     ================================================= -->
+
+<section
+    class="admin-panel"
+    id="edit-news-panel"
+    style="display: none;"
+>
+
+    <div class="admin-panel-heading">
+
+        <div>
+
+            <h3>
+                <i class="fas fa-pen-to-square"></i>
+                Edit News Article
+            </h3>
+
+            <p>
+                Update the selected news article.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <form id="editNewsForm">
+
+        <input
+            type="hidden"
+            id="editNewsId"
+        >
+
+
+        <div class="admin-form-grid">
+
+
+            <!-- TITLE -->
+
+            <div class="admin-form-group admin-form-full">
+
+                <label for="editNewsTitle">
+                    News Title
+                    <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="editNewsTitle"
+                    placeholder="Enter news title"
+                    required
+                >
+
+            </div>
+
+
+            <!-- CATEGORY -->
+
+            <div class="admin-form-group">
+
+                <label for="editNewsCategory">
+                    Category
+                    <span>*</span>
+                </label>
+
+                <select
+                    id="editNewsCategory"
+                    required
+                >
+
+                    <option value="">
+                        Select category
+                    </option>
+
+                    <option value="Business">
+                        Business
+                    </option>
+
+                    <option value="Chamber News">
+                        Chamber News
+                    </option>
+
+                    <option value="Economy">
+                        Economy
+                    </option>
+
+                    <option value="Events">
+                        Events
+                    </option>
+
+                    <option value="Announcements">
+                        Announcements
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- AUTHOR -->
+
+            <div class="admin-form-group">
+
+                <label for="editNewsAuthor">
+                    Author
+                </label>
+
+                <input
+                    type="text"
+                    id="editNewsAuthor"
+                    placeholder="Author name"
+                >
+
+            </div>
+
+
+            <!-- IMAGE URL -->
+
+            <div class="admin-form-group admin-form-full">
+
+                <label for="editNewsImage">
+                    Image URL
+                </label>
+
+                <input
+                    type="url"
+                    id="editNewsImage"
+                    placeholder="https://example.com/image.jpg"
+                >
+
+            </div>
+
+
+            <!-- EXCERPT -->
+
+            <div class="admin-form-group admin-form-full">
+
+                <label for="editNewsExcerpt">
+                    Short Summary
+                </label>
+
+                <textarea
+                    id="editNewsExcerpt"
+                    rows="3"
+                    placeholder="Write a short summary..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- CONTENT -->
+
+            <div class="admin-form-group admin-form-full">
+
+                <label for="editNewsContent">
+                    Article Content
+                    <span>*</span>
+                </label>
+
+                <textarea
+                    id="editNewsContent"
+                    rows="10"
+                    placeholder="Write the full news article..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="admin-form-group">
+
+                <label for="editNewsStatus">
+                    Status
+                </label>
+
+                <select id="editNewsStatus">
+
+                    <option value="Published">
+                        Published
+                    </option>
+
+                    <option value="Draft">
+                        Draft
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div class="admin-form-actions">
+
+            <button
+                type="submit"
+                class="admin-primary-button"
+            >
+                <i class="fas fa-save"></i>
+                Save Changes
+            </button>
+
+
+            <button
+                type="button"
+                id="cancelEditNews"
+                class="admin-secondary-button"
+            >
+                <i class="fas fa-xmark"></i>
+                Cancel
+            </button>
+
+        </div>
+
+    </form>
+
+</section>
+
+            <!-- =================================================
+                 EXISTING NEWS
+                 ================================================= -->
+
+            <section class="admin-panel">
+
+                <div class="admin-panel-heading">
+
+                    <div>
+
+                        <h3>
+                            <i class="fas fa-list"></i>
+                            Existing News
+                        </h3>
+
+                        <p>
+                            Manage published articles and drafts.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        id="refreshNews"
+                        class="admin-secondary-button"
+                    >
+                        <i class="fas fa-arrows-rotate"></i>
+                        Refresh
+                    </button>
+
+                </div>
+
+
+                <div id="admin-news-list">
+
+                    <div class="admin-loading">
+
+                        <i class="fas fa-spinner fa-spin"></i>
+
+                        Loading news...
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script src="admin-news.js"></script>
+
+</body>
+
+</html>

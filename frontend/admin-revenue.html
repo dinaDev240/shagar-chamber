@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Shagar Chamber | Revenue Management
+    </title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Admin Styles -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         ADMIN HEADER
+         ===================================================== -->
+
+    <header class="admin-header">
+
+        <div class="admin-header-inner">
+
+            <div class="admin-brand">
+
+                <div class="admin-logo">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+
+                <div>
+
+                    <h1>
+                        Shagar Chamber
+                    </h1>
+
+                    <span>
+                        Revenue Management
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="index.html"
+                class="admin-back-link"
+            >
+
+                <i class="fas fa-arrow-left"></i>
+
+                Back to Website
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="admin-main">
+
+        <div class="admin-container">
+
+
+            <!-- PAGE HEADING -->
+
+            <div class="admin-page-heading">
+
+                <span class="admin-section-label">
+
+                    <i class="fas fa-chart-line"></i>
+
+                    Financial Management
+
+                </span>
+
+
+                <h2>
+                    Revenue Management
+                </h2>
+
+
+                <p>
+                    Record, monitor and manage revenue generated
+                    through Chamber services and activities.
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 REVENUE FORM
+                 ================================================= -->
+
+            <section class="admin-panel">
+
+                <div class="admin-panel-heading">
+
+                    <div>
+
+                        <h3>
+
+                            <i class="fas fa-plus-circle"></i>
+
+                            Add Revenue Record
+
+                        </h3>
+
+                        <p>
+                            Enter a new Chamber revenue transaction.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="revenueForm">
+
+
+                    <!-- REVENUE TYPE -->
+
+                    <div class="form-group">
+
+                        <label for="revenueType">
+                            Revenue Type
+                        </label>
+
+                        <select
+                            id="revenueType"
+                            name="revenueType"
+                            required
+                        >
+
+                            <option value="">
+                                Select revenue type
+                            </option>
+
+                            <option value="Membership">
+                                Membership
+                            </option>
+
+                            <option value="Partnership">
+                                Partnership
+                            </option>
+
+                            <option value="Expo">
+                                Expo
+                            </option>
+
+                            <option value="Event">
+                                Event
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="form-group">
+
+                        <label for="description">
+                            Description
+                        </label>
+
+                        <input
+                            type="text"
+                            id="description"
+                            name="description"
+                            placeholder="Example: Annual membership fee"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- PAYER NAME -->
+
+                    <div class="form-group">
+
+                        <label for="payerName">
+                            Payer Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="payerName"
+                            name="payerName"
+                            placeholder="Business or person's name"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- AMOUNT -->
+
+                    <div class="form-group">
+
+                        <label for="amount">
+                            Amount (ETB)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="amount"
+                            name="amount"
+                            min="0"
+                            step="0.01"
+                            placeholder="0.00"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- PAYMENT METHOD -->
+
+                    <div class="form-group">
+
+                        <label for="paymentMethod">
+                            Payment Method
+                        </label>
+
+                        <select
+                            id="paymentMethod"
+                            name="paymentMethod"
+                            required
+                        >
+
+                            <option value="">
+                                Select payment method
+                            </option>
+
+                            <option value="CBE">
+                                CBE
+                            </option>
+
+                            <option value="CBO">
+                                CBO
+                            </option>
+
+                            <option value="Sinke">
+                                Sinke
+                            </option>
+
+                            <option value="Awash">
+                                Awash
+                            </option>
+
+                            <option value="Cash">
+                                Cash
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- PAYMENT STATUS -->
+
+                    <div class="form-group">
+
+                        <label for="paymentStatus">
+                            Payment Status
+                        </label>
+
+                        <select
+                            id="paymentStatus"
+                            name="paymentStatus"
+                        >
+
+                            <option value="Pending">
+                                Pending
+                            </option>
+
+                            <option value="Paid">
+                                Paid
+                            </option>
+
+                            <option value="Failed">
+                                Failed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- PAYMENT DATE -->
+
+                    <div class="form-group">
+
+                        <label for="paymentDate">
+                            Payment Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="paymentDate"
+                            name="paymentDate"
+                        >
+
+                    </div>
+
+
+
+                    <!-- REFERENCE -->
+
+                    <div class="form-group">
+
+                        <label for="reference">
+                            Reference
+                        </label>
+
+                        <input
+                            type="text"
+                            id="reference"
+                            name="reference"
+                            placeholder="Optional payment reference"
+                        >
+
+                    </div>
+
+
+
+                    <!-- NOTES -->
+
+                    <div class="form-group">
+
+                        <label for="notes">
+                            Notes
+                        </label>
+
+                        <textarea
+                            id="notes"
+                            name="notes"
+                            rows="4"
+                            placeholder="Additional information..."
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        class="admin-primary-button"
+                    >
+
+                        <i class="fas fa-save"></i>
+
+                        Save Revenue Record
+
+                    </button>
+
+
+                </form>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 REVENUE LIST
+                 ================================================= -->
+
+            <section class="admin-panel">
+
+                <div class="admin-panel-heading">
+
+                    <div>
+
+                        <h3>
+
+                            <i class="fas fa-list"></i>
+
+                            Revenue Records
+
+                        </h3>
+
+                        <p>
+                            View all recorded Chamber revenue.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        id="refreshRevenue"
+                        class="admin-secondary-button"
+                    >
+
+                        <i class="fas fa-arrows-rotate"></i>
+
+                        Refresh
+
+                    </button>
+
+                </div>
+
+
+                <div id="admin-revenue-list">
+
+                    <div class="admin-loading">
+
+                        <i class="fas fa-spinner fa-spin"></i>
+
+                        Loading revenue records...
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script src="admin-revenue.js"></script>
+
+</body>
+
+</html>

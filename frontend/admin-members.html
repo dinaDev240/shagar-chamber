@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Shagar Chamber | Admin Membership Management
+    </title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Main Website Styles -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         ADMIN MEMBERSHIP PAGE
+         ===================================================== -->
+
+    <main class="admin-members-page">
+
+        <div class="container">
+
+            <!-- PAGE HEADING -->
+            <div class="section-heading">
+
+                <span class="section-label">
+                    ADMINISTRATION
+                </span>
+
+                <h1>
+                    Membership Management
+                </h1>
+
+                <p>
+                    Review and manage Shagar Chamber membership
+                    applications.
+                </p>
+
+            </div>
+            <!-- =====================================================
+                 SEARCH & FILTERING
+                 ===================================================== -->
+
+            <section class="admin-search-section">
+
+                <div class="admin-search-heading">
+
+                    <div>
+                        <span class="section-label">
+                            SEARCH & FILTERING
+                        </span>
+
+                        <h2>
+                            Find Membership Applications
+                        </h2>
+
+                        <p>
+                            Search and filter membership applications
+                            quickly and easily.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="admin-search-controls">
+
+                    <!-- SEARCH -->
+
+                    <div class="admin-search-box">
+
+                        <label for="memberSearch">
+                            Search Members
+                        </label>
+
+                        <div class="admin-search-input">
+
+                            <i class="fas fa-search"></i>
+
+                            <input
+                                type="text"
+                                id="memberSearch"
+                                placeholder="Search by name, email, or business..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div class="admin-filter-box">
+
+                        <label for="memberStatusFilter">
+                            Status
+                        </label>
+
+                        <select id="memberStatusFilter">
+
+                            <option value="">
+                                All Statuses
+                            </option>
+
+                            <option value="Pending">
+                                Pending
+                            </option>
+
+                            <option value="Active">
+                                Active
+                            </option>
+
+                            <option value="Rejected">
+                                Rejected
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- MEMBERSHIP TYPE -->
+
+                    <div class="admin-filter-box">
+
+                        <label for="memberTypeFilter">
+                            Membership Type
+                        </label>
+
+                        <select id="memberTypeFilter">
+
+                            <option value="">
+                                All Membership Types
+                            </option>
+
+                            <option value="Member">
+                                Member
+                            </option>
+
+                            <option value="Partnership">
+                                Partnership
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- PAYMENT STATUS -->
+
+                    <div class="admin-filter-box">
+
+                        <label for="memberPaymentFilter">
+                            Payment Status
+                        </label>
+
+                        <select id="memberPaymentFilter">
+
+                            <option value="">
+                                All Payment Statuses
+                            </option>
+
+                            <option value="Pending">
+                                Pending
+                            </option>
+
+                            <option value="Paid">
+                                Paid
+                            </option>
+
+                            <option value="Failed">
+                                Failed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CLEAR FILTERS -->
+
+                <div class="admin-search-actions">
+
+                    <button
+                        type="button"
+                        id="clearMemberFilters"
+                        class="admin-secondary-button"
+                    >
+
+                        <i class="fas fa-rotate-left"></i>
+
+                        Clear Filters
+
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!-- MEMBERS LIST -->
+            <section class="admin-members-section">
+
+                <div class="admin-members-list"
+                     id="admin-members-list">
+
+                    <!-- Membership applications
+                         will be loaded here -->
+
+                    <div class="admin-empty-state">
+
+                        <i class="fas fa-users"></i>
+
+                        <h3>
+                            Loading Membership Applications...
+                        </h3>
+
+                        <p>
+                            Please wait while applications are loaded.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- Admin Membership JavaScript -->
+    <script src="admin-members.js"></script>
+
+</body>
+
+</html>
+

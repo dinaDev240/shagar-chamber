@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        SHAGAR CHAMBER / ADMIN PARTNERSHIPS MANAGEMENT
+    </title>
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- MAIN WEBSITE STYLES -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         ADMIN HEADER
+         ===================================================== -->
+
+    <header class="admin-header">
+
+        <div class="admin-container">
+
+            <div class="admin-header-content">
+
+                <div class="admin-brand">
+
+                    <i class="fa-solid fa-handshake"></i>
+
+                    <div>
+
+                        <h1>
+                            Shagar Chamber
+                        </h1>
+
+                        <span>
+                            Partnerships Management
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="index.html"
+                    class="admin-back-link"
+                >
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back to Website
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="admin-main">
+
+        <div class="admin-container">
+
+
+            <!-- =================================================
+                 PAGE HEADING
+                 ================================================= -->
+
+            <div class="admin-page-heading">
+
+                <span class="admin-section-label">
+                    PARTNERSHIPS
+                </span>
+
+                <h2>
+                    Partnership Management
+                </h2>
+
+                <p>
+                    Create, update and manage
+                    Shagar Chamber partnerships.
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CREATE / EDIT FORM
+                 ================================================= -->
+
+            <section class="admin-panel">
+
+                <div class="admin-panel-header">
+
+                    <div>
+
+                        <h3>
+                            Add Partnership
+                        </h3>
+
+                        <p>
+                            Enter the partner organization's
+                            information below.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form
+                    id="partnershipForm"
+                    class="admin-form"
+                >
+
+
+                    <!-- PARTNER NAME -->
+
+                    <div class="admin-form-group">
+
+                        <label for="partnerName">
+                            Partner Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="partnerName"
+                            name="partnerName"
+                            placeholder="Enter partner name"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- PARTNER TYPE -->
+
+                    <div class="admin-form-group">
+
+                        <label for="partnerType">
+                            Partner Type
+                        </label>
+
+                        <select
+                            id="partnerType"
+                            name="partnerType"
+                            required
+                        >
+
+                            <option value="">
+                                Select partner type
+                            </option>
+
+                            <option value="Government">
+                                Government
+                            </option>
+
+                            <option value="Private Company">
+                                Private Company
+                            </option>
+
+                            <option value="Bank">
+                                Bank / Financial Institution
+                            </option>
+
+                            <option value="NGO">
+                                NGO / Development Organization
+                            </option>
+
+                            <option value="Association">
+                                Association
+                            </option>
+
+                            <option value="International Organization">
+                                International Organization
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- STATUS -->
+
+                    <div class="admin-form-group">
+
+                        <label for="partnershipStatus">
+                            Status
+                        </label>
+
+                        <select
+                            id="partnershipStatus"
+                            name="partnershipStatus"
+                        >
+
+                            <option value="Active">
+                                Active
+                            </option>
+
+                            <option value="Inactive">
+                                Inactive
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- LOGO -->
+
+                    <div class="admin-form-group">
+
+                        <label for="partnerLogo">
+                            Logo URL
+                        </label>
+
+                        <input
+                            type="url"
+                            id="partnerLogo"
+                            name="partnerLogo"
+                            placeholder="https://example.com/logo.jpg"
+                        >
+
+                    </div>
+
+
+
+                    <!-- WEBSITE -->
+
+                    <div class="admin-form-group">
+
+                        <label for="partnerWebsite">
+                            Website URL
+                        </label>
+
+                        <input
+                            type="url"
+                            id="partnerWebsite"
+                            name="partnerWebsite"
+                            placeholder="https://example.com"
+                        >
+
+                    </div>
+
+
+
+                    <!-- EMAIL -->
+
+                    <div class="admin-form-group">
+
+                        <label for="partnerEmail">
+                            Contact Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="partnerEmail"
+                            name="partnerEmail"
+                            placeholder="partner@example.com"
+                        >
+
+                    </div>
+
+
+
+                    <!-- PHONE -->
+
+                    <div class="admin-form-group">
+
+                        <label for="partnerPhone">
+                            Contact Phone
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="partnerPhone"
+                            name="partnerPhone"
+                            placeholder="0912345678"
+                        >
+
+                    </div>
+
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="admin-form-group admin-form-full">
+
+                        <label for="partnerDescription">
+                            Partnership Description
+                        </label>
+
+                        <textarea
+                            id="partnerDescription"
+                            name="partnerDescription"
+                            rows="6"
+                            placeholder="Describe the partnership..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- FORM BUTTONS -->
+
+                    <div class="admin-form-actions">
+
+                        <button
+                            type="submit"
+                            class="admin-primary-button"
+                        >
+
+                            <i class="fa-solid fa-plus"></i>
+
+                            Create Partnership
+
+                        </button>
+
+
+                        <button
+                            type="reset"
+                            class="admin-secondary-button"
+                        >
+
+                            <i class="fa-solid fa-rotate-left"></i>
+
+                            Reset
+
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PARTNERSHIP LIST
+                 ================================================= -->
+
+            <section class="admin-panel">
+
+                <div class="admin-panel-header">
+
+                    <div>
+
+                        <h3>
+                            Existing Partnerships
+                        </h3>
+
+                        <p>
+                            Manage partnerships currently
+                            stored in the system.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        id="refreshPartnerships"
+                        class="admin-secondary-button"
+                    >
+
+                        <i class="fa-solid fa-arrows-rotate"></i>
+
+                        Refresh
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="admin-partnerships-list"
+                    class="admin-list"
+                >
+
+                    <div class="admin-empty-state">
+
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+
+                        <p>
+                            Loading partnerships...
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script src="admin-partnerships.js"></script>
+
+</body>
+
+</html>

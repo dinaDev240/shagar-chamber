@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login API Test</title>
+</head>
+
+<body>
+
+    <h1>Admin Login API Test</h1>
+
+   <button id="loginButton">
+    Test Admin Login
+</button>
+
+<button id="sessionButton">
+    Test Admin Session
+</button>
+
+<pre id="result"></pre>
+    <script>
+    var API_BASE = (window.location.port === "5000") ? window.location.origin : ("http://" + (window.location.hostname || "localhost") + ":5000");
+
+        document
+            .getElementById("loginButton")
+            .addEventListener("click", function () {
+
+                fetch("http://127.0.0.1:5000/api/admin/login", {
+
+                    method: "POST",
+credentials: "include",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        email: "admin@shagarchamber.com",
+                        password: "Admin@12345"
+                    })
+
+                })
+
+                .then(response => response.json())
+
+                .then(data => {
+
+                    document
+                        .getElementById("result")
+                        .textContent =
+                            JSON.stringify(data, null, 4);
+
+                })
+
+                .catch(error => {
+
+                    document
+                        .getElementById("result")
+                        .textContent =
+                            "Error: " + error;
+
+                });
+
+            });
+        document
+            .getElementById("sessionButton")
+            .addEventListener("click", function () {
+
+                fetch("http://127.0.0.1:5000/api/admin/test", {
+
+                    method: "GET",
+                    credentials: "include"
+
+                })
+
+                .then(response => response.json())
+
+                .then(data => {
+
+                    document
+                        .getElementById("result")
+                        .textContent =
+                            JSON.stringify(data, null, 4);
+
+                })
+
+                .catch(error => {
+
+                    document
+                        .getElementById("result")
+                        .textContent =
+                            "Error: " + error;
+
+                });
+
+            });
+    </script>
+
+</body>
+
+</html>

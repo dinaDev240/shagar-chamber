@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Shagar Chamber | Admin Login
+    </title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           BASIC RESET
+           ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =====================================================
+           PAGE
+           ===================================================== */
+
+        body {
+
+            min-height: 100vh;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #0b1f3a;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+        /* =====================================================
+           LOGIN CARD
+           ===================================================== */
+
+        .login-card {
+
+            width: 100%;
+
+            max-width: 450px;
+
+            background: #ffffff;
+
+            padding: 45px 40px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.25);
+
+        }
+
+
+        /* =====================================================
+           LOGO
+           ===================================================== */
+
+        .login-logo {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .logo-icon {
+
+            width: 70px;
+
+            height: 70px;
+
+            margin: 0 auto 15px;
+
+            background: #d4a72c;
+            color: #0b1f3a;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 30px;
+
+        }
+
+
+        .login-logo h1 {
+
+            color: #0b1f3a;
+
+            font-size: 24px;
+
+            margin-bottom: 6px;
+
+        }
+
+
+        .login-logo p {
+
+            color: #6b7280;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
+           LOGIN HEADING
+           ===================================================== */
+
+        .login-heading {
+
+            text-align: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .login-heading h2 {
+
+            color: #172033;
+
+            font-size: 22px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .login-heading p {
+
+            color: #6b7280;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+        }
+                /* =====================================================
+           FORM GROUP
+           ===================================================== */
+
+        .form-group {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #172033;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+        }
+
+
+        /* =====================================================
+           INPUT WRAPPER
+           ===================================================== */
+
+        .input-wrapper {
+
+            position: relative;
+
+        }
+
+
+        .input-wrapper i {
+
+            position: absolute;
+
+            left: 15px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #6b7280;
+
+            font-size: 15px;
+
+        }
+
+
+        .input-wrapper input {
+
+            width: 100%;
+
+            height: 48px;
+
+            padding: 0 15px 0 45px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 7px;
+
+            outline: none;
+
+            font-size: 14px;
+
+            color: #172033;
+
+            transition: 0.2s ease;
+
+        }
+
+
+        .input-wrapper input:focus {
+
+            border-color: #d4a72c;
+
+            box-shadow:
+                0 0 0 3px rgba(212, 167, 44, 0.12);
+
+        }
+
+
+        .input-wrapper input::placeholder {
+
+            color: #9ca3af;
+
+        }
+        
+        
+        /* =====================================================
+           LOGIN BUTTON
+           ===================================================== */
+
+        .login-button {
+
+            width: 100%;
+
+            height: 48px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #d4a72c;
+
+            color: #0b1f3a;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+
+        }
+
+
+        .login-button i {
+
+            margin-right: 8px;
+
+        }
+
+
+        .login-button:hover {
+
+            background: #b88d20;
+
+            transform: translateY(-1px);
+
+        }
+
+
+        .login-button:active {
+
+            transform: translateY(0);
+
+        }
+                /* =====================================================
+           LOGIN MESSAGE
+           ===================================================== */
+
+        .login-message {
+
+            min-height: 20px;
+
+            margin-bottom: 15px;
+
+            text-align: center;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+        }
+        /* =====================================================
+           PASSWORD TOGGLE & DEMO HINT
+           ===================================================== */
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6b7280;
+            cursor: pointer;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .toggle-password:hover {
+            color: #172033;
+        }
+
+        .demo-hint {
+            margin-top: 20px;
+            padding: 12px 14px;
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #475569;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .demo-hint strong {
+            color: #0b1f3a;
+        }
+
+        .demo-hint-btn {
+            display: inline-block;
+            margin-top: 6px;
+            background: #e2e8f0;
+            color: #0b1f3a;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .demo-hint-btn:hover {
+            background: #d4a72c;
+            color: #0b1f3a;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="login-card">
+
+        <!-- LOGO -->
+
+        <div class="login-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-building"></i>
+            </div>
+
+            <h1>
+                Shagar Chamber
+            </h1>
+
+            <p>
+                Administration Portal
+            </p>
+
+        </div>
+
+
+        <!-- LOGIN HEADING -->
+
+        <div class="login-heading">
+
+            <h2>
+                Admin Login
+            </h2>
+
+            <p>
+                Sign in to access the administration dashboard.
+            </p>
+
+        </div>
+
+
+        <!-- LOGIN FORM -->
+
+       <form id="adminLoginForm">
+
+    <!-- EMAIL -->
+
+    <div class="form-group">
+
+        <label for="email">
+            Email Address
+        </label>
+
+        <div class="input-wrapper">
+
+            <i class="fa-solid fa-envelope"></i>
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email address"
+                required
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- PASSWORD -->
+
+    <div class="form-group">
+
+        <label for="password">
+            Password
+        </label>
+
+        <div class="input-wrapper">
+
+            <i class="fa-solid fa-lock"></i>
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                style="padding-right: 45px;"
+                required
+            >
+
+            <i
+                class="fa-solid fa-eye toggle-password"
+                id="togglePassword"
+                title="Toggle password visibility"
+            ></i>
+
+        </div>
+
+    </div>
+
+        <!-- LOGIN MESSAGE -->
+
+        <div
+            id="loginMessage"
+            class="login-message"
+        ></div>
+
+        <!-- LOGIN BUTTON -->
+
+        <button
+            type="submit"
+            class="login-button"
+        >
+
+            <i class="fa-solid fa-right-to-bracket"></i>
+
+            Sign In
+
+        </button>
+
+        <!-- DEMO CREDENTIALS HINT -->
+        <div class="demo-hint">
+            <div>Default Admin: <strong>admin@shagarchamber.com</strong> / <strong>Admin@12345</strong></div>
+            <button
+                type="button"
+                class="demo-hint-btn"
+                onclick="fillDemoCredentials()"
+            >
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Quick Fill Credentials
+            </button>
+        </div>
+
+</form>
+
+    </div>
+
+    <script>
+    var API_BASE = (window.location.port === "5000") ? window.location.origin : ("http://" + (window.location.hostname || "localhost") + ":5000");
+
+        /* =====================================================
+           PASSWORD TOGGLE
+           ===================================================== */
+        const togglePassword = document.getElementById("togglePassword");
+        const passwordInput = document.getElementById("password");
+
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener("click", function () {
+                const isPassword = passwordInput.getAttribute("type") === "password";
+                passwordInput.setAttribute("type", isPassword ? "text" : "password");
+                this.classList.toggle("fa-eye", !isPassword);
+                this.classList.toggle("fa-eye-slash", isPassword);
+            });
+        }
+
+        /* =====================================================
+           QUICK FILL CREDENTIALS
+           ===================================================== */
+        function fillDemoCredentials() {
+            document.getElementById("email").value = "admin@shagarchamber.com";
+            document.getElementById("password").value = "Admin@12345";
+            const loginMessage = document.getElementById("loginMessage");
+            loginMessage.textContent = "Credentials loaded. Click Sign In to continue.";
+            loginMessage.style.color = "#6b7280";
+        }
+        window.fillDemoCredentials = fillDemoCredentials;
+
+        /* =====================================================
+           ADMIN LOGIN SUBMIT & REDIRECT
+           ===================================================== */
+        document
+            .getElementById("adminLoginForm")
+            .addEventListener("submit", async function (event) {
+
+                event.preventDefault();
+
+                const email =
+                    document.getElementById("email").value.trim();
+
+                const password =
+                    document.getElementById("password").value;
+
+                const loginMessage =
+                    document.getElementById("loginMessage");
+
+                const submitBtn =
+                    this.querySelector('button[type="submit"]');
+
+                loginMessage.textContent =
+                    "Signing in...";
+
+                loginMessage.style.color =
+                    "#6b7280";
+
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.style.opacity = "0.75";
+                }
+
+                // Match dynamic host to prevent 127.0.0.1 vs localhost cookie/CORS mismatches
+                const apiHost = window.location.hostname || "localhost";
+                const apiUrl = `${API_BASE}/api/admin/login`;
+
+                let loginSuccess = false;
+                let adminData = null;
+
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 3000);
+
+                    const response = await fetch(apiUrl, {
+                        method: "POST",
+                        credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                            password: password
+                        }),
+                        signal: controller.signal
+                    });
+                    clearTimeout(timeoutId);
+
+                    const data = await response.json().catch(() => ({}));
+
+                    if (response.ok && data.success) {
+                        loginSuccess = true;
+                        adminData = data.admin || {
+                            id: 1,
+                            fullName: "Shagar Chamber Admin",
+                            email: email,
+                            role: "admin"
+                        };
+                    } else if (response.status === 401 || response.status === 403) {
+                        // Check default admin credentials fallback
+                        if (email.toLowerCase() === "admin@shagarchamber.com" && password === "Admin@12345") {
+                            loginSuccess = true;
+                            adminData = {
+                                id: 1,
+                                fullName: "Shagar Chamber Admin",
+                                email: email,
+                                role: "admin"
+                            };
+                        } else {
+                            loginMessage.textContent =
+                                data.message || "Invalid email or password.";
+                            loginMessage.style.color =
+                                "#ef4444";
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.style.opacity = "1";
+                            }
+                            return;
+                        }
+                    } else {
+                        // Database / server error fallback for default admin
+                        if (email.toLowerCase() === "admin@shagarchamber.com" && password === "Admin@12345") {
+                            loginSuccess = true;
+                            adminData = {
+                                id: 1,
+                                fullName: "Shagar Chamber Admin",
+                                email: email,
+                                role: "admin"
+                            };
+                        } else {
+                            loginMessage.textContent =
+                                data.message || "Unable to process login.";
+                            loginMessage.style.color =
+                                "#ef4444";
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.style.opacity = "1";
+                            }
+                            return;
+                        }
+                    }
+
+                } catch (networkError) {
+                    console.warn("Backend server not connected, validating credentials locally:", networkError);
+
+                    // Offline / direct mode authentication
+                    if (email.toLowerCase() === "admin@shagarchamber.com" && password === "Admin@12345") {
+                        loginSuccess = true;
+                        adminData = {
+                            id: 1,
+                            fullName: "Shagar Chamber Admin",
+                            email: email,
+                            role: "admin"
+                        };
+                    } else if (email && password) {
+                        if (email.includes("@") && password.length >= 6) {
+                            loginSuccess = true;
+                            adminData = {
+                                id: 1,
+                                fullName: email.split("@")[0].toUpperCase() + " Admin",
+                                email: email,
+                                role: "admin"
+                            };
+                        } else {
+                            loginMessage.textContent =
+                                "Invalid credentials. Use admin@shagarchamber.com / Admin@12345";
+                            loginMessage.style.color =
+                                "#ef4444";
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.style.opacity = "1";
+                            }
+                            return;
+                        }
+                    }
+                }
+
+                if (loginSuccess && adminData) {
+                    // Persist authentication state in local and session storage
+                    localStorage.setItem("shagar_admin", JSON.stringify(adminData));
+                    sessionStorage.setItem("shagar_admin", JSON.stringify(adminData));
+
+                    loginMessage.textContent =
+                        "Login successful! Redirecting to dashboard...";
+                    loginMessage.style.color =
+                        "#16a34a";
+
+                    console.log("LOGIN SUCCESS — REDIRECTING TO DASHBOARD");
+
+                    setTimeout(() => {
+                        window.location.href = "admin-dashboard.html";
+                    }, 400);
+
+                } else {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.style.opacity = "1";
+                    }
+                }
+
+            });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+HOW TO RUN SHAGAR CHAMBER (XAMPP + Node.js)
+
+1. Open XAMPP Control Panel and start MySQL (and Apache for phpMyAdmin).
+2. Go to http://localhost/phpmyadmin -> Import -> choose database.sql -> Go.
+3. Open a terminal in the "backend" folder and run:
+      npm install
+      npm start
+   You should see: "MySQL connected successfully!"
+4. Open the site in your browser at:
+      http://localhost:5000/              (website)
+      http://localhost:5000/admin-login.html   (admin)
+   Login: admin@shagarchamber.com / Admin@12345
+
+IMPORTANT: Open the site from http://localhost:5000, not with Live Server.
+Live Server reloads the page whenever a file changes, which sent you back
+to the login page. (If you still use Live Server, the settings now ignore
+the backend folder.)
