@@ -1,4 +1,4 @@
-var API_BASE = (window.location.port === "5000") ? window.location.origin : ("http://" + (window.location.hostname || "localhost") + ":5000");
+var API_BASE = window.location.origin;
 /* =====================================================
    SHAGAR CHAMBER
    ADMIN REVENUE MANAGEMENT

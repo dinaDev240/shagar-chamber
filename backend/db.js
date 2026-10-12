@@ -1,23 +1,28 @@
+
 const mysql = require("mysql2");
 
-const db = mysql.createConnection({
-    host: process.env.DB_HOST || "localhost",
-    user: process.env.DB_USER || "root",
-    password: process.env.DB_PASSWORD || "",
-    database: process.env.DB_NAME || "shagar_chamber"
+const db = mysql.createPool({
+    host: process.env.DB_HOST,
+    port: Number(process.env.DB_PORT || 4000),
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME || "shagar_chamber",
+    ssl: {
+        minVersion: "TLSv1.2"
+    },
+    waitForConnections: true,
+    connectionLimit: 5,
+    queueLimit: 0
 });
 
-db.connect((err) => {
+db.getConnection((err, connection) => {
     if (err) {
-        console.error("❌ MySQL connection failed:", err.message);
+        console.error("Database connection error:", err.message);
         return;
     }
 
-    console.log("✅ MySQL connected successfully!");
-});
-
-db.on("error", (err) => {
-    console.error("⚠️ MySQL connection error:", err.message);
+    console.log("Connected to TiDB Cloud.");
+    connection.release();
 });
 
 module.exports = db;
