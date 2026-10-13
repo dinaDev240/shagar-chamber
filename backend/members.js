@@ -1,33 +1,29 @@
 const express = require("express");
 const router = express.Router();
-
+const fs = require("fs");
+const path = require("path");
 const db = require("./db");
 const requireAdmin = require("./admin-middleware");
+const uploadDirs = [
+    path.join(__dirname, "uploads", "national-ids"),
+    path.join(__dirname, "uploads", "payment-receipts")
+];
+
+uploadDirs.forEach((dir) => {
+    fs.mkdirSync(dir, { recursive: true });
+});
 const multer = require("multer");
-const path = require("path");
+
+    
 const storage = multer.diskStorage({
-
     destination: function (req, file, cb) {
-
-        if (
-            file.fieldname === "paymentReceipt"
-        ) {
-
-            cb(
-                null,
-                "uploads/payment-receipts/"
-            );
-
+        if (file.fieldname === "paymentReceipt") {
+            cb(null, path.join(__dirname, "uploads", "payment-receipts"));
         } else {
-
-            cb(
-                null,
-                "uploads/national-ids/"
-            );
-
+            cb(null, path.join(__dirname, "uploads", "national-ids"));
         }
-
     },
+
 
     filename: function (req, file, cb) {
 
