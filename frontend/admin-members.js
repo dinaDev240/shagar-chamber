@@ -237,8 +237,7 @@ ${
             <h5>Front</h5>
 
             <img
-                src=API_BASE + "/api/members/id-image/${encodeURIComponent(frontFileName)}"
-                alt="National ID Front"
+               src="${API_BASE}/api/members/id-image/${encodeURIComponent(frontFileName)}"
             >
 
         </div>
@@ -248,8 +247,7 @@ ${
             <h5>Back</h5>
 
             <img
-               src=API_BASE + "/api/members/id-image/${encodeURIComponent(backFileName)}"
-                alt="National ID Back"
+               src="${API_BASE}/api/members/id-image/${encodeURIComponent(backFileName)}"
             >
 
         </div>
@@ -274,8 +272,7 @@ ${
                 paymentReceiptFileName
                     ? `
                         <img
-                            src=API_BASE + "/api/members/payment-receipt/${encodeURIComponent(paymentReceiptFileName)}"
-                            alt="Payment Receipt"
+                           src="${API_BASE}/api/members/payment-receipt/${encodeURIComponent(paymentReceiptFileName)}"
                         >
                     `
                     : `
