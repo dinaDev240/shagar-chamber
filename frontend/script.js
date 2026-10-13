@@ -609,10 +609,10 @@ formData.append(
                     error
                 );
 
-                alert(
-                    "Unable to connect to the Shagar Chamber server.\n\n" +
-                    "Please make sure the backend server is running."
-                );
+              alert(
+    "Membership submission failed:\n\n" +
+    (error.message || "Unknown error. Check the browser console.")
+);
 
             } finally {
 
@@ -967,7 +967,17 @@ async function loadOpportunities() {
             API_BASE + "/api/opportunities"
         );
 
-        const result = await response.json();
+        const responseText = await response.text();
+
+let result;
+
+try {
+    result = JSON.parse(responseText);
+} catch {
+    throw new Error(
+        `Server returned an unexpected response (HTTP ${response.status}).`
+    );
+}
 
         if (!response.ok || !result.success) {
             throw new Error(
