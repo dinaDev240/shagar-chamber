@@ -3,6 +3,7 @@ const router = express.Router();
 
 const db = require("./db");
 const requireAdmin = require("./admin-middleware");
+const { persistUploads, sendStoredFile } = require("./file-storage");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
@@ -141,6 +142,7 @@ router.get("/", requireAdmin, (req, res) => {
 router.post(
     "/",
     upload.single("cv"),
+    persistUploads(() => "job-applications"),
     (req, res) => {
 
         const {
@@ -359,33 +361,11 @@ router.patch("/:id/status", requireAdmin, (req, res) => {
    ===================================================== */
 
 router.get("/cv/:filename", requireAdmin, (req, res) => {
-
-    const filename =
-        path.basename(req.params.filename);
-
-    const filePath =
-        path.join(uploadDirectory, filename);
-
-
-    if (!fs.existsSync(filePath)) {
-
-        return res.status(404).json({
-            success: false,
-            message: "CV file not found."
+    sendStoredFile(res, "job-applications", req.params.filename, "CV file not found.")
+        .catch((err) => {
+            console.error("Failed to send CV:", err);
+            res.status(500).json({ success: false, message: "Unable to load CV." });
         });
-
-    }
-
-
-    res.sendFile(
-    filePath,
-    {
-        headers: {
-            "Content-Disposition": "inline"
-        }
-    }
-);
-
 });
 
 /* =====================================================

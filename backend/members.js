@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const db = require("./db");
 const requireAdmin = require("./admin-middleware");
+const { persistUploads, sendStoredFile } = require("./file-storage");
 const uploadDirs = [
     path.join(__dirname, "uploads", "national-ids"),
     path.join(__dirname, "uploads", "payment-receipts")
@@ -80,6 +81,9 @@ router.post(
             maxCount: 1
         }
     ]),
+    persistUploads((file) =>
+        file.fieldname === "paymentReceipt" ? "payment-receipts" : "national-ids"
+    ),
     (req, res) => {
    const {
     fullName,
@@ -196,8 +200,8 @@ const databasePaymentStatus = "Pending";
     email,
     phone,
     null,
-    nationalIdFront.path,
-    nationalIdBack.path,
+    nationalIdFront.filename,
+    nationalIdBack.filename,
     tin || null,
     businessName,
     businessSector,
@@ -208,7 +212,7 @@ const databasePaymentStatus = "Pending";
     membershipFee,
     databasePaymentStatus,
     paymentMethod,
-    paymentReceipt.path
+    paymentReceipt.filename
 ];
 
     db.query(sql, values, (err, result) => {
@@ -294,66 +298,19 @@ router.get("/", requireAdmin, (req, res) => {
 // =====================================================
 
 router.get("/id-image/:filename", requireAdmin, (req, res) => {
-
-    const fs = require("fs");
-
-    const path = require("path");
-
-    const filename = path.basename(
-        req.params.filename
-    );
-
-    const filePath = path.join(
-        __dirname,
-        "uploads",
-        "national-ids",
-        filename
-    );
-
-    if (!fs.existsSync(filePath)) {
-
-        return res.status(404).json({
-            success: false,
-            message: "National ID image not found."
+    sendStoredFile(res, "national-ids", req.params.filename, "National ID image not found.")
+        .catch((err) => {
+            console.error("Failed to send ID image:", err);
+            res.status(500).json({ success: false, message: "Unable to load image." });
         });
-
-    }
-
-    res.sendFile(filePath);
-
 });
-// =====================================================
-// GET PAYMENT RECEIPT IMAGE
-// =====================================================
 
 router.get("/payment-receipt/:filename", requireAdmin, (req, res) => {
-
-    const fs = require("fs");
-
-    const path = require("path");
-
-    const filename = path.basename(
-        req.params.filename
-    );
-
-    const filePath = path.join(
-        __dirname,
-        "uploads",
-        "payment-receipts",
-        filename
-    );
-
-    if (!fs.existsSync(filePath)) {
-
-        return res.status(404).json({
-            success: false,
-            message: "Payment receipt not found."
+    sendStoredFile(res, "payment-receipts", req.params.filename, "Payment receipt not found.")
+        .catch((err) => {
+            console.error("Failed to send receipt:", err);
+            res.status(500).json({ success: false, message: "Unable to load image." });
         });
-
-    }
-
-    res.sendFile(filePath);
-
 });
 // =====================================================
 // UPDATE MEMBERSHIP APPLICATION STATUS
