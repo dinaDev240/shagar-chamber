@@ -4,7 +4,11 @@ const fs = require("fs");
 const path = require("path");
 const db = require("./db");
 const requireAdmin = require("./admin-middleware");
-const { persistUploads, sendStoredFile } = require("./file-storage");
+const {
+    persistUploads,
+    sendStoredFile,
+    deleteStoredFile
+} = require("./file-storage");
 const uploadDirs = [
     path.join(__dirname, "uploads", "national-ids"),
     path.join(__dirname, "uploads", "payment-receipts")
@@ -311,6 +315,114 @@ router.get("/payment-receipt/:filename", requireAdmin, (req, res) => {
             console.error("Failed to send receipt:", err);
             res.status(500).json({ success: false, message: "Unable to load image." });
         });
+});
+// =====================================================
+// DELETE MEMBERSHIP APPLICATION
+// Admin authentication required
+// =====================================================
+
+router.delete("/:id", requireAdmin, (req, res) => {
+
+    const memberId = Number(req.params.id);
+
+    if (!Number.isSafeInteger(memberId) || memberId < 1) {
+        return res.status(400).json({
+            success: false,
+            message: "Invalid membership application ID."
+        });
+    }
+
+    const findSql = `
+        SELECT id, national_id_front, national_id_back, payment_receipt
+        FROM members
+        WHERE id = ?
+    `;
+
+    db.query(findSql, [memberId], (findErr, rows) => {
+
+        if (findErr) {
+            console.error("Failed to find membership application:", findErr);
+
+            return res.status(500).json({
+                success: false,
+                message: "Unable to find the membership application."
+            });
+        }
+
+        if (!rows || rows.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "Membership application not found."
+            });
+        }
+
+        const member = rows[0];
+
+        const deleteSql = `
+            DELETE FROM members
+            WHERE id = ?
+        `;
+
+        db.query(deleteSql, [memberId], async (deleteErr, result) => {
+
+            if (deleteErr) {
+                console.error("Failed to delete membership application:", deleteErr);
+
+                return res.status(500).json({
+                    success: false,
+                    message:
+                        "Unable to delete this membership application. Check whether another database record depends on it."
+                });
+            }
+
+            if (!result || result.affectedRows === 0) {
+                return res.status(404).json({
+                    success: false,
+                    message: "Membership application not found."
+                });
+            }
+
+            const filesToDelete = [
+                member.national_id_front
+                    ? deleteStoredFile("national-ids", member.national_id_front)
+                    : Promise.resolve(),
+
+                member.national_id_back
+                    ? deleteStoredFile("national-ids", member.national_id_back)
+                    : Promise.resolve(),
+
+                member.payment_receipt
+                    ? deleteStoredFile("payment-receipts", member.payment_receipt)
+                    : Promise.resolve()
+            ];
+
+            const cleanupResults = await Promise.allSettled(filesToDelete);
+
+            const cleanupFailed = cleanupResults.some(
+                item => item.status === "rejected"
+            );
+
+            if (cleanupFailed) {
+                console.error(
+                    "Membership record deleted, but some document cleanup failed:",
+                    memberId,
+                    cleanupResults
+                        .filter(item => item.status === "rejected")
+                        .map(item => item.reason)
+                );
+            }
+
+            return res.json({
+                success: true,
+                message: cleanupFailed
+                    ? "Membership application deleted, but some uploaded documents may need storage cleanup."
+                    : "Membership application and its uploaded documents deleted successfully."
+            });
+
+        });
+
+    });
+
 });
 // =====================================================
 // UPDATE MEMBERSHIP APPLICATION STATUS

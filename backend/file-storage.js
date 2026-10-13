@@ -121,4 +121,40 @@ async function sendStoredFile(res, folder, filename, notFoundMessage, inline = t
     return res.status(404).json({ success: false, message: notFoundMessage });
 }
 
-module.exports = { persistUploads, sendStoredFile };
+
+async function deleteStoredFile(folder, filename) {
+    const safeName = path.basename(filename || "");
+
+    if (!safeName) {
+        return;
+    }
+
+    const localPath = path.join(
+        __dirname,
+        "uploads",
+        folder,
+        safeName
+    );
+
+    // Remove the private Supabase object first.
+    if (supabase) {
+        const { error } = await supabase.storage
+            .from(BUCKET_NAME)
+            .remove([`${folder}/${safeName}`]);
+
+        if (error) {
+            throw error;
+        }
+    }
+
+    // Remove the local copy only after remote removal succeeds.
+    if (fs.existsSync(localPath)) {
+        fs.unlinkSync(localPath);
+    }
+}
+
+module.exports = {
+    persistUploads,
+    sendStoredFile,
+    deleteStoredFile
+};

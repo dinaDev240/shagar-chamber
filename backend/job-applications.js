@@ -3,10 +3,130 @@ const router = express.Router();
 
 const db = require("./db");
 const requireAdmin = require("./admin-middleware");
-const { persistUploads, sendStoredFile } = require("./file-storage");
+
+const {
+    persistUploads,
+    sendStoredFile,
+    deleteStoredFile
+} = require("./file-storage");
+
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+
+/* =====================================================
+   DELETE ONE JOB APPLICATION
+   Admin authentication required.
+   ===================================================== */
+
+router.delete("/:id", requireAdmin, (req, res) => {
+
+    const applicationId = Number(req.params.id);
+
+    if (
+        !Number.isSafeInteger(applicationId) ||
+        applicationId < 1
+    ) {
+        return res.status(400).json({
+            success: false,
+            message: "Invalid job application ID."
+        });
+    }
+
+    const findSql = `
+        SELECT id, cv_path
+        FROM job_applications
+        WHERE id = ?
+    `;
+
+    db.query(findSql, [applicationId], (findErr, rows) => {
+
+        if (findErr) {
+            console.error(
+                "Failed to find job application for deletion:",
+                findErr
+            );
+
+            return res.status(500).json({
+                success: false,
+                message: "Unable to find the job application."
+            });
+        }
+
+        if (!rows || rows.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "Job application not found."
+            });
+        }
+
+        const cvPath = rows[0].cv_path;
+        const cvFilename = cvPath
+            ? path.basename(cvPath)
+            : "";
+
+        const deleteSql = `
+            DELETE FROM job_applications
+            WHERE id = ?
+        `;
+
+        db.query(
+            deleteSql,
+            [applicationId],
+            async (deleteErr, result) => {
+
+                if (deleteErr) {
+                    console.error(
+                        "Failed to delete job application:",
+                        deleteErr
+                    );
+
+                    return res.status(500).json({
+                        success: false,
+                        message:
+                            "Unable to delete this job application. Check whether another database record depends on it."
+                    });
+                }
+
+                if (result.affectedRows === 0) {
+                    return res.status(404).json({
+                        success: false,
+                        message: "Job application not found."
+                    });
+                }
+
+                try {
+                    if (cvFilename) {
+                        await deleteStoredFile(
+                            "job-applications",
+                            cvFilename
+                        );
+                    }
+
+                    return res.json({
+                        success: true,
+                        message:
+                            "Job application and its CV deleted successfully."
+                    });
+
+                } catch (cleanupError) {
+
+                    console.error(
+                        "Application deleted, but CV cleanup failed:",
+                        applicationId,
+                        cleanupError
+                    );
+
+                    return res.json({
+                        success: true,
+                        message:
+                            "Job application deleted, but its CV may need storage cleanup."
+                    });
+                }
+            }
+        );
+    });
+});
 
 /* =====================================================
    CV UPLOAD FOLDER

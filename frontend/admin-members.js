@@ -291,6 +291,20 @@ ${
 
                           </div>
 
+<div class="admin-member-actions">
+
+    <button
+        type="button"
+        class="delete-member-button"
+        data-member-id="${member.id}"
+        data-member-name="${escapeHtml(member.full_name)}"
+    >
+        <i class="fas fa-trash"></i>
+        Delete Membership
+    </button>
+
+</div>
+
                         </div>
                     `;
 
@@ -323,6 +337,52 @@ filterMembers();
      // =====================================================
     // APPROVE MEMBERSHIP APPLICATION
    // =====================================================
+
+async function deleteMember(memberId, memberName) {
+
+    const confirmed = confirm(
+        `PERMANENT DELETION\n\n` +
+        `Are you sure you want to delete the membership application for "${memberName}"?\n\n` +
+        `This cannot be undone. The member record and associated uploaded documents will be deleted.`
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            `${API_BASE}/api/members/${encodeURIComponent(memberId)}`,
+            {
+                method: "DELETE",
+                credentials: "include"
+            }
+        );
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            throw new Error(
+                result.message || "Unable to delete membership application."
+            );
+        }
+
+        alert(result.message);
+
+        await loadMembers();
+
+    } catch (error) {
+
+        console.error("Membership deletion failed:", error);
+
+        alert(
+            error.message ||
+            "Unable to delete membership application."
+        );
+
+    }
+}
 
     async function approveMember(memberId) {
 
@@ -780,6 +840,26 @@ membersList.addEventListener("click", function (event) {
             failedPaymentButton.dataset.memberId;
 
         markPaymentFailed(memberId);
+
+        return;
+    }
+
+    // =====================================================
+    // DELETE MEMBERSHIP APPLICATION
+    // =====================================================
+
+    const deleteButton =
+        event.target.closest(".delete-member-button");
+
+    if (deleteButton) {
+
+        const memberId =
+            deleteButton.dataset.memberId;
+
+        const memberName =
+            deleteButton.dataset.memberName || "this member";
+
+        deleteMember(memberId, memberName);
 
         return;
     }

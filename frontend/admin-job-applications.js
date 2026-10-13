@@ -145,15 +145,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 <td>
 
-                    <button
-                        type="button"
-                        class="view-btn view-application-btn"
-                        data-id="${application.id}">
 
-                        <i class="fas fa-eye"></i>
-                        View
+<button
+    type="button"
+    class="view-btn view-application-btn"
+    data-id="${application.id}">
 
-                    </button>
+    <i class="fas fa-eye"></i>
+    View
+
+</button>
+
+<button
+    type="button"
+    class="delete-application-btn"
+    data-id="${application.id}"
+    data-name="${escapeHtml(application.full_name)}">
+
+    <i class="fas fa-trash"></i>
+    Delete
+
+</button>
+
 
                 </td>
 
@@ -195,7 +208,79 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    /* =====================================================
+       DELETE JOB APPLICATION BUTTON
+       ===================================================== */
 
+    applicationsTableBody.addEventListener("click", function (event) {
+
+        const deleteButton =
+            event.target.closest(".delete-application-btn");
+
+        if (!deleteButton) {
+            return;
+        }
+
+        const applicationId = deleteButton.dataset.id;
+
+        const applicantName =
+            deleteButton.dataset.name || "this applicant";
+
+        deleteApplication(applicationId, applicantName);
+
+    });
+
+
+    async function deleteApplication(applicationId, applicantName) {
+
+        const confirmed = confirm(
+            `PERMANENT DELETION\n\n` +
+            `Are you sure you want to delete the job application for "${applicantName}"?\n\n` +
+            `The application record and its uploaded CV will be deleted. This cannot be undone.`
+        );
+
+        if (!confirmed) {
+            return;
+        }
+
+        try {
+
+            const response = await fetch(
+                `${API_BASE}/api/job-applications/${encodeURIComponent(applicationId)}`,
+                {
+                    method: "DELETE",
+                    credentials: "include"
+                }
+            );
+
+            const result = await response.json();
+
+            if (!response.ok || !result.success) {
+                throw new Error(
+                    result.message ||
+                    "Unable to delete this job application."
+                );
+            }
+
+            alert(result.message);
+
+            await loadApplications();
+
+        } catch (error) {
+
+            console.error(
+                "Job application deletion failed:",
+                error
+            );
+
+            alert(
+                error.message ||
+                "Unable to delete this job application."
+            );
+
+        }
+
+    }
     /* =====================================================
        OPEN ONE APPLICATION
        ===================================================== */
