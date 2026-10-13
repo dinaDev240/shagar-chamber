@@ -21,19 +21,27 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
+
+app.set("trust proxy", 1);
+
+if (!process.env.SESSION_SECRET) {
+    throw new Error("SESSION_SECRET must be configured");
+}
+
 app.use(
     session({
-        secret: process.env.SESSION_SECRET || "shagar-chamber-admin-secret",
+        secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
         cookie: {
             httpOnly: true,
-            secure: false,
+            secure: process.env.NODE_ENV === "production",
             sameSite: "lax",
             maxAge: 1000 * 60 * 60 * 2
         }
     })
 );
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
