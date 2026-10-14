@@ -6,6 +6,20 @@ var API_BASE = window.location.origin;
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    // Escape HTML before displaying member information
+    function escapeHtml(value) {
+        if (value === null || value === undefined) {
+            return "";
+        }
+
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
 const membersList =
         document.getElementById("admin-members-list");
 
