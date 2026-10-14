@@ -305,19 +305,7 @@ ${
 
                           </div>
 
-<div class="admin-member-actions">
 
-    <button
-        type="button"
-        class="delete-member-button"
-        data-member-id="${member.id}"
-        data-member-name="${escapeHtml(member.full_name)}"
-    >
-        <i class="fas fa-trash"></i>
-        Delete Membership
-    </button>
-
-</div>
 
                         </div>
                     `;
